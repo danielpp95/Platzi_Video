@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import '../assets/styles/App.scss';
 
 // Components
 import Header from '../components/Header';
@@ -8,46 +9,45 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/Carouselitem';
 import Footer from '../components/Footer';
 
-import '../assets/styles/App.scss';
+// Hooks
+import useInitialState from '../hooks/useInitialState';
+
+const API = 'http://localhost:3000/initalState';
 
 const App = () => {
-    const [Videos, SetVideos] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:3000/initalState')
-            .then((response) => response.json())
-            .then((data) => SetVideos(data));
-    }, []);
-
-    console.log(Videos);
-
+    const initialState = useInitialState(API);
     return (
         <div className='App'>
             <Header />
             <Search />
-            <Categories
-                title='List 1'
-            >
-                <Carousel>
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                </Carousel>
-            </Categories>
-
-            <Categories title='Tendencias'>
-                <Carousel>
-                    <CarouselItem />
-                </Carousel>
-            </Categories>
-
-            <Categories title='Platzi Video Originals'>
-                <Carousel>
-                    <CarouselItem />
-                    <CarouselItem />
-                </Carousel>
-            </Categories>
+            {
+                Object.keys(initialState).length > 0 &&
+                Object.values(initialState).map((list, index) => {
+                    return list.length < 1 ? null : (
+                        <Categories
+                            key={Object.keys(initialState)[index]}
+                            title={Object.keys(initialState)[index]}
+                        >
+                            <Carousel>
+                                {
+                                    list.map((item) => {
+                                        return (
+                                            <CarouselItem
+                                                key={item.id}
+                                                title={item.title}
+                                                cover={item.cover}
+                                                year={item.year}
+                                                contentRating={item.contentRating}
+                                                duration={item.duration}
+                                            />
+                                        );
+                                    })
+                                }
+                            </Carousel>
+                        </Categories>
+                    );
+                })
+            }
             <Footer />
         </div>
     );
