@@ -2,12 +2,10 @@ import React from 'react';
 import '../assets/styles/App.scss';
 
 // Components
-import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/Carouselitem';
-import Footer from '../components/Footer';
 
 // Hooks
 import useInitialState from '../hooks/useInitialState';
@@ -17,8 +15,7 @@ const API = 'http://localhost:3000/initalState';
 const App = () => {
     const initialState = useInitialState(API);
     return (
-        <div className='App'>
-            <Header />
+        <>
             <Search />
             {
                 Object.keys(initialState).length > 0 &&
@@ -48,8 +45,7 @@ const App = () => {
                     );
                 })
             }
-            <Footer />
-        </div>
+        </>
     );
 };
 
