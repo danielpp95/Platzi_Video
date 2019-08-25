@@ -11,10 +11,24 @@ export default () => (
     <div className='App'>
         <Header/>
         <Search/>
-        <Categories>
+        <Categories
+            title='List 1'>
             <Carousel>
                 <CarouselItem/>
                 <CarouselItem/>
+                <CarouselItem/>
+                <CarouselItem/>
+            </Carousel>
+        </Categories>
+        
+        <Categories title='Tendencias'>
+            <Carousel>
+                <CarouselItem/>
+            </Carousel>
+        </Categories>
+
+        <Categories title='Platzi Video Originals'>
+            <Carousel>
                 <CarouselItem/>
                 <CarouselItem/>
             </Carousel>
