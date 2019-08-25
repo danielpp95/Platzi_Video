@@ -7,8 +7,8 @@ import userIcon from '../assets/static/user-icon.png'
 export default () => (
     <header className='header'>
         <img className='header__img' src={logo} alt=""/>
-        <div className='headr__menu'>
-            <div className="herder__menu--profile">
+        <div className='header__menu'>
+            <div className="header__menu--profile">
                 <img src={userIcon} alt=""/>
                 <p>Perfil</p>
             </div>
