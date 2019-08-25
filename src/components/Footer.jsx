@@ -1,15 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import '../assets/components/Footer.scss'
+import '../assets/components/Footer.scss';
 
-const footer_terms = 'Terminos de uso'
-const footer_privacy = 'Declaración de privacidad'
-const footer_help = 'Centro de ayuda'
+const footerTerms = 'Terminos de uso';
+const footerPrivacy = 'Declaración de privacidad';
+const footerHelp = 'Centro de ayuda';
 
-export default () => (
+const Footer = () => (
     <footer className='footer'>
-        <a href="/">{footer_terms}</a>
-        <a href="/">{footer_privacy}</a>
-        <a href="/">{footer_help}</a>
+        <a href='/'>{footerTerms}</a>
+        <a href='/'>{footerPrivacy}</a>
+        <a href='/'>{footerHelp}</a>
     </footer>
-)
+);
+
+export default Footer;
