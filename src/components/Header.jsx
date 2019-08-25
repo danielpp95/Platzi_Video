@@ -1,12 +1,15 @@
 import React from 'react'
 import '../assets/components/Header.scss'
 
+import logo from '../assets/static/logo-platzi-video-BW2.png'
+import userIcon from '../assets/static/user-icon.png'
+
 export default () => (
     <header className='header'>
-        <img src="header__img" alt=""/>
+        <img className='header__img' src={logo} alt=""/>
         <div className='headr__menu'>
             <div className="herder__menu--profile">
-                <img src="../assets/user-icon.png" alt=""/>
+                <img src={userIcon} alt=""/>
                 <p>Perfil</p>
             </div>
             <ul>

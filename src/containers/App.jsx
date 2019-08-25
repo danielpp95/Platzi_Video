@@ -14,6 +14,9 @@ export default () => (
         <Categories>
             <Carousel>
                 <CarouselItem/>
+                <CarouselItem/>
+                <CarouselItem/>
+                <CarouselItem/>
             </Carousel>
         </Categories>
         <Footer/>
