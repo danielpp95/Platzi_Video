@@ -1,15 +1,15 @@
-const path = require('path')
-const HtmlWebpackPLugin = require('html-webpack-plugin')
-const MiniSccExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const HtmlWebpackPLugin = require('html-webpack-plugin');
+const MiniSccExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
     },
     module: {
         rules: [
@@ -17,43 +17,43 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
-                }
+                    loader: 'babel-loader',
+                },
             },
             {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: 'html-loader'
-                    }
-                ]
+                        loader: 'html-loader',
+                    },
+                ],
             },
             {
                 test: /\.(s*)css$/,
                 use: [
                     {
-                        loader: MiniSccExtractPlugin.loader
+                        loader: MiniSccExtractPlugin.loader,
                     },
                     'css-loader',
-                    'sass-loader'
-                ]
+                    'sass-loader',
+                ],
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
                 loader: 'file-loader',
                 options: {
-                    name: 'assets/[hash].[ext]'
-                }
-            }
-        ]
+                    name: 'assets/[hash].[ext]',
+                },
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPLugin({
             template: './public/index.html',
-            filename: './index.html'
+            filename: './index.html',
         }),
         new MiniSccExtractPlugin({
-            filename: 'assets/[name].css'
-        })
-    ]
-}
+            filename: 'assets/[name].css',
+        }),
+    ],
+};
