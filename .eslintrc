@@ -81,11 +81,8 @@
       "^(err|error|anySpecificError)$"
     ],
     "indent": [
-      2,
-      2,
-      {
-        "SwitchCase": 1
-      }
+      "error",
+      4
     ],
     "key-spacing": [
       2,
@@ -261,9 +258,10 @@
       2,
       "never"
     ],
+    "react/jsx-indent": ["error", 4],
     "react/jsx-indent-props": [
-      2,
-      2
+      "error",
+      4
     ],
     "react/jsx-no-bind": [
       2,
