@@ -34,6 +34,7 @@ const App = ({ myList, trends, originals }) => {
                                         return (
                                             <CarouselItem
                                                 key={item.id}
+                                                id={item.id}
                                                 title={item.title}
                                                 cover={item.cover}
                                                 year={item.year}
