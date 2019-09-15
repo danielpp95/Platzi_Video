@@ -1,10 +1,10 @@
 import { actions } from '../actions/index';
 
+let exists = false;
+
 const reducer = (state, action) => {
     switch (action.type) {
     case actions.setFavorite:
-        var exists = false;
-
         state.myList.forEach((element) => {
             if (element.id == action.payload.id) {
                 exists = true;
@@ -14,7 +14,7 @@ const reducer = (state, action) => {
         if (!exists) {
             const object = action.payload;
             object.isList = false;
-            
+
             return {
                 ...state,
                 myList: [
@@ -32,6 +32,12 @@ const reducer = (state, action) => {
             myList: state.myList.filter(
                 (items) => items.id !== action.payload,
             ),
+        };
+
+    case actions.loginRequest:
+        return {
+            ...state,
+            user: action.payload,
         };
 
     default:
