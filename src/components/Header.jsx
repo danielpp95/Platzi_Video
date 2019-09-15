@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../assets/components/Header.scss';
 import { Link } from 'react-router-dom';
-
+import { logoutRequest } from '../actions';
 import gravatar from '../utils/gravatar';
 
 // Components
@@ -13,7 +13,11 @@ const Header = (props) => {
     const { user } = props;
 
     const hasUser = user ? Object.keys(user).length > 0 : null;
-    console.log(user);
+
+    const handleLogout = (event) => {
+        props.logoutRequest({});
+    };
+
     return (
         <header className='header'>
             <Link to='/'>
@@ -27,12 +31,33 @@ const Header = (props) => {
                     <p>Perfil</p>
                 </div>
                 <ul>
-                    <li>
-                        <Link to='/accounr'>Cuenta</Link>
-                    </li>
-                    <li>
-                        <Link to='/login'>Iniciar sesión</Link>
-                    </li>
+                    {
+                        hasUser ?
+                            (
+                                <>
+                                    <li>
+                                        <Link to='/account'>
+                                            {user.name}
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href='#logout'
+                                            onClick={handleLogout}
+                                        >
+                                            Cerrar Sesión
+                                        </a>
+                                    </li>
+                                </>
+                            ) :
+                            (
+                                <li>
+                                    <Link to='/login'>
+                                        Iniciar sesión
+                                    </Link>
+                                </li>
+                            )
+                    }
                 </ul>
             </div>
         </header>
@@ -45,4 +70,8 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = {
+    logoutRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
