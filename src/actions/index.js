@@ -15,6 +15,6 @@ export const deleteFavorite = (payload) => ({
 });
 
 export const loginRequest = (payload) => ({
-    type: actions.deleteFavorite,
+    type: actions.loginRequest,
     payload,
 });
